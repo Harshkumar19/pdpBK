@@ -39,7 +39,7 @@ const SCREEN_RESPONSES = {
     data: {
       extension_message_response: {
         params: {
-          flow_token: "flows-builder-18da35c6",
+          flow_token: "flows-builder-db50c614",
           appointment_confirmed: true,
           message: "",
         },
