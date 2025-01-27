@@ -1,5 +1,6 @@
 // flow.js
-import { Pool } from "pg";
+import pkg from "pg";
+const { Pool } = pkg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -48,7 +49,7 @@ const SCREEN_RESPONSES = {
 };
 
 export const getNextScreen = async (decryptedBody) => {
-  const { screen, data, action, flow_token } = decryptedBody;
+  const { action, screen, data, flow_token } = decryptedBody;
 
   // Handle health check
   if (action === "ping") {
@@ -80,7 +81,6 @@ export const getNextScreen = async (decryptedBody) => {
     switch (screen) {
       case "SCHEDULE":
         try {
-          // Map time slot to actual time
           const timeSlot = SCREEN_RESPONSES.SCHEDULE.data.appointment_time.find(
             (slot) => slot.id === data.appointment_time
           );

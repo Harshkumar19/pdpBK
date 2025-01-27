@@ -3,7 +3,8 @@ import crypto from "crypto";
 import dotenv from "dotenv";
 import { decryptRequest, encryptResponse } from "./encryption.js";
 import { getNextScreen } from "./flow.js";
-import { Pool } from "pg";
+import pkg from "pg";
+const { Pool } = pkg;
 
 dotenv.config();
 
