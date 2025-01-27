@@ -176,10 +176,17 @@ app.post("/", async (req, res) => {
 });
 
 // Health check endpoint
-app.get("/health", async (req, res) => {
+app.post("/health", async (req, res) => {
+  const { action } = req.body;
+
+  // Check if the action is "ping"
+  if (action !== "ping") {
+    return res.status(400).json({ error: "Invalid request" });
+  }
+
   try {
     await pool.query("SELECT 1"); // Simple query to check connection
-    res.json({ status: "healthy", database: "connected" });
+    res.json({ data: { status: "active" } });
   } catch (error) {
     console.error("Health check error:", error);
     res.status(500).json({ status: "unhealthy", error: error.message });
