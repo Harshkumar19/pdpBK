@@ -82,6 +82,7 @@ function isRequestSignatureValid(req) {
 
 // Endpoint to handle appointments
 app.post("/appointments", async (req, res) => {
+  console.log("hit hua");
   try {
     const { decryptedBody, aesKeyBuffer, initialVectorBuffer } = decryptRequest(
       req.body,
