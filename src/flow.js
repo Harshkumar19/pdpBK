@@ -49,6 +49,7 @@ const SCREEN_RESPONSES = {
 };
 
 export const getNextScreen = async (decryptedBody) => {
+  console.log(decryptedBody);
   const { action, screen, data, flow_token } = decryptedBody;
 
   // Handle health check
